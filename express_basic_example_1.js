@@ -1,26 +1,27 @@
 const express = require("express");
 const app = express();
+const PORT = 3000;
 
 /* GET books listing. */
-app.get("/books", function(req, res) {
+app.get("/books", (req, res) => {
   res.send("You requested a list of books....");
 });
 
 /* GET a specific book with ID */
-app.get("/books/:bookId", function(req, res) {
+app.get("/books/:bookId", (req, res) => {
   res.send(`You request information on book ${req.params.bookId}`);
 });
 
 /* GET users listing. */
-app.get("/users", function(req, res) {
+app.get("/users", (req, res) => {
   res.send("You requested a list of users....");
 });
 
 /* GET a specific user with ID */
-app.get("/users/:userId", function(req, res) {
+app.get("/users/:userId", (req, res) => {
   res.send(`You request information on user ${req.params.userId}`);
 });
 
-const server = app.listen(3000, function() {
-  console.log("Application started....");
+const server = app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
