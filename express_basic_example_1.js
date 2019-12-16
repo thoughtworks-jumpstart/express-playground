@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
+app.get("/", (req, res) => {
+  res.end("Welcome to my homepage");
+});
+
 /* GET books listing. */
 app.get("/books", (req, res) => {
   res.send("You requested a list of books....");
