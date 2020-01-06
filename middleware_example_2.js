@@ -9,6 +9,9 @@ const arrowFunction = (req, res, next) => {
 
 app.use(arrowFunction);
 
+// try http://localhost:3000/users?color=blue
+// or http://localhost:3000/books?color=blue
+// is there a difference?
 const checkColor = () => {
   return (req, res, next) => {
     if (req.query.color) {
