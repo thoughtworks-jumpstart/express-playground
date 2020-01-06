@@ -12,11 +12,13 @@ app.use("/users", function(req, res, next) {
   next();
 });
 
+// this will only be called for POST requests
 app.post("/users", function(req, res, next) {
   console.log("second middleware function for /users was called!");
   next();
 });
 
+// this will only be called for GET requests
 app.get("/users", function(req, res, next) {
   console.log("third middleware function for /users was called!");
   next();
