@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-const bookRouter = require("./routes/books");
-const userRouter = require("./routes/users");
+const booksRouter = require("./routes/books");
+const usersRouter = require("./routes/users");
 
-app.use("/books", bookRouter);
-app.use("/users", userRouter);
+app.use("/books", booksRouter);
+app.use("/users", usersRouter);
 
 const server = app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
