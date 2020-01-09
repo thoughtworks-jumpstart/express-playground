@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
+const PORT = 3000;
 
 app.use(express.json());
 
-app.post("/users", function(req, res) {
-  const userName = req.body.name;
-  res.send(`${userName} is created.`);
+app.post("/users", (req, res) => {
+  const userName = req.body.username;
+  res.send(`You would like to create a user with username: ${userName}.`);
 });
 
-const server = app.listen(3000, function() {
-  console.log("Application started....");
+const server = app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
