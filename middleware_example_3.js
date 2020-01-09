@@ -14,12 +14,12 @@ app.post("/", requireJsonContent, (req, res, next) => {
   res.send("Thanks for the JSON!");
 });
 
-app.get("/users", function(req, res) {
+app.get("/users", (req, res) => {
   console.log("users list was shown");
   res.send("Here is a list of users:....");
 });
 
-app.get("/books", function(req, res) {
+app.get("/books", (req, res) => {
   console.log("books list was shown");
   res.send("Here is a list of books:....");
 });
