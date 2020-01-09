@@ -2,34 +2,34 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   console.log("common middleware function was called!");
   next();
 });
 
-app.use("/users", function(req, res, next) {
+app.use("/users", (req, res, next) => {
   console.log("middleware function for /users was called!");
   next();
 });
 
 // this will only be called for POST requests
-app.post("/users", function(req, res, next) {
+app.post("/users", (req, res, next) => {
   console.log("second middleware function for /users was called!");
   next();
 });
 
 // this will only be called for GET requests
-app.get("/users", function(req, res, next) {
+app.get("/users", (req, res, next) => {
   console.log("third middleware function for /users was called!");
   next();
 });
 
-app.get("/users", function(req, res) {
+app.get("/users", (req, res) => {
   console.log("users list was shown");
   res.send("Here is a list of users:....");
 });
 
-app.get("/books", function(req, res) {
+app.get("/books", (req, res) => {
   console.log("books list was shown");
   res.send("Here is a list of books:....");
 });
