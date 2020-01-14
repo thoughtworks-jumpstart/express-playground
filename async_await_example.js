@@ -1,9 +1,16 @@
 const express = require("express");
 const app = express();
+const PORT = 3000;
 
 const wrapAsync = fn => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch(err => next(err));
 };
+
+const notAsync = (req, res) => {
+  res.send("i am not async function");
+};
+
+app.get("/notAsync", wrapAsync(notAsync));
 
 // this function simulates one asynchronous operation,
 // e.g. loading user profile from database
@@ -22,7 +29,7 @@ const getUserProfile = async (req, res, next) => {
 app.get("/users/:userName", wrapAsync(getUserProfile));
 
 // this function simulates one asynchronous operation that generate errors,
-// e.g. loading an blog entry from database
+// e.g. loading a blog entry from database
 const loadBlogPostFromDB = postId => {
   return new Promise((resolve, reject) => {
     setTimeout(() => reject(new Error("Network Connection Error")), 10);
@@ -33,7 +40,7 @@ const getBlogPost = async (req, res, next) => {
   const postId = req.params.postId;
   // note: this line below would throw error
   const post = await loadBlogPostFromDB(postId);
-  res.return(post);
+  res.send(post);
 };
 
 app.get("/posts/:postId", wrapAsync(getBlogPost));
@@ -43,6 +50,6 @@ app.use(function(err, req, res, next) {
   res.send({ err: err.message });
 });
 
-const server = app.listen(3000, function() {
-  console.log("Application started....");
+const server = app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
