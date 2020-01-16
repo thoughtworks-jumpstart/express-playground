@@ -28,11 +28,12 @@ describe("GET /books", () => {
     done();
   });
 
-  it("should get a book by id'", async done => {
+  it("should get a book by id", async done => {
+    const id = "3";
     const response = await request(app)
-      .get("/books/3")
+      .get("/books/" + id)
       .expect(200);
-    expect(response.text).toEqual("You request information on book 3");
+    expect(response.text).toEqual("You request information on book " + id);
     done();
   });
 });
