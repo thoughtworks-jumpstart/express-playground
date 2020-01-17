@@ -31,9 +31,9 @@ describe("GET /books", () => {
   it("should get a book by id", async done => {
     const id = "3";
     const response = await request(app)
-      .get("/books/" + id)
+      .get(`/books/${id}`)
       .expect(200);
-    expect(response.text).toEqual("You request information on book " + id);
+    expect(response.text).toEqual(`You request information on book ${id}`);
     done();
   });
 });
